@@ -1,0 +1,26 @@
+{
+  "name": "ajaxer",
+  "version": "1.0.0",
+  "description": "An http client library that abstracts AJAX functionality and supports cancellation",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suhdev/ajaxer.git"
+  },
+  "keywords": [
+    "AJAX",
+    "HttpClient"
+  ],
+  "author": "Suhail Abood <suhail.abood@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suhdev/ajaxer/issues"
+  },
+  "homepage": "https://github.com/suhdev/ajaxer#readme"
+}
