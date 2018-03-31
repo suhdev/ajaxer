@@ -1,4 +1,4 @@
-import { ResponseTransform } from './index';
+import { ResponseTransform } from "./AjaxClient";
 export declare function createQuerySring(body: object): string;
 export declare function getXhrBody(content: any, contentType?: string): any;
 export declare function getXhrResponseBody(xhr: XMLHttpRequest, respPipeline: ResponseTransform[]): any;

@@ -1,5 +1,5 @@
 import { IHttpRequestConfig } from "./IHttpRequestConfig";
-import { ResponseTransform } from ".";
+import { ResponseTransform } from "./AjaxClient";
 export declare type IReqContentType = {
     text(): IReq;
     json(): IReq;

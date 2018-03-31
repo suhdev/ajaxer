@@ -1,4 +1,5 @@
-import { ResponseTransform } from './index';
+import { ResponseTransform } from "./AjaxClient";
+
 export function createQuerySring(body:object){
     var str = []; 
     for(var k in body){
