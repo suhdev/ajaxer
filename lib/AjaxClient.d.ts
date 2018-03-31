@@ -9,16 +9,16 @@ export declare class AjaxClient implements IHttpClient {
     constructor();
     readonly responsePipeline: IResponsePipeline;
     readonly requestPipeline: IRequestPipeline;
-    get(url: string): any;
-    get(cfg: IHttpRequestConfig): any;
-    put(url: string, body?: any): any;
-    put(cfg: IHttpRequestConfig): any;
-    post(url: string, body?: any): any;
-    post(cfg: IHttpRequestConfig): any;
-    delete(url: string, body?: any): any;
-    delete(cfg: IHttpRequestConfig): any;
-    patch(url: string, body?: any): any;
-    patch(cfg: IHttpRequestConfig): any;
+    get<T>(url: string): Promise<T>;
+    get<T>(cfg: IHttpRequestConfig): Promise<T>;
+    put<T>(url: string, body?: any): Promise<T>;
+    put<T>(cfg: IHttpRequestConfig): Promise<T>;
+    post<T>(url: string, body?: any): Promise<T>;
+    post<T>(cfg: IHttpRequestConfig): Promise<T>;
+    delete<T>(url: string, body?: any): Promise<T>;
+    delete<T>(cfg: IHttpRequestConfig): Promise<T>;
+    patch<T>(url: string, body?: any): Promise<T>;
+    patch<T>(cfg: IHttpRequestConfig): Promise<T>;
     request<T>(cfg: IHttpRequestConfig): Promise<T>;
 }
 export interface ICacheItem<T> {

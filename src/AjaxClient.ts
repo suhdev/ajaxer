@@ -23,9 +23,9 @@ export class AjaxClient implements IHttpClient{
         return this._requestPipeline; 
     }
 
-    get(url:string);
-    get(cfg:IHttpRequestConfig);
-    get(...args:any[]){
+    get<T>(url:string):Promise<T>;
+    get<T>(cfg:IHttpRequestConfig):Promise<T>;
+    get<T>(...args:any[]):Promise<T>{
         if (args.length === 0){
             throw new Error(`Invalid argument, expected object or string but got undefined`); 
         }
@@ -44,9 +44,9 @@ export class AjaxClient implements IHttpClient{
         throw new Error(`Invalid argument, expected single argument but got ${args.length}`);
     }
 
-    put(url:string,body?:any);
-    put(cfg:IHttpRequestConfig);
-    put(...args:any[]){
+    put<T>(url:string,body?:any):Promise<T>;
+    put<T>(cfg:IHttpRequestConfig):Promise<T>;
+    put<T>(...args:any[]):Promise<T>{
         if (args.length === 0){
             throw new Error(`Invalid argument, expected object or string but got undefined`); 
         }
@@ -63,9 +63,9 @@ export class AjaxClient implements IHttpClient{
         }
     }
 
-    post(url:string,body?:any);
-    post(cfg:IHttpRequestConfig);
-    post(...args:any[]){
+    post<T>(url:string,body?:any):Promise<T>;
+    post<T>(cfg:IHttpRequestConfig):Promise<T>;
+    post<T>(...args:any[]):Promise<T>{
         if (args.length === 0){
             throw new Error(`Invalid argument, expected object or string but got undefined`); 
         }
@@ -82,9 +82,9 @@ export class AjaxClient implements IHttpClient{
         }
     }
 
-    delete(url:string,body?:any);
-    delete(cfg:IHttpRequestConfig);
-    delete(...args:any[]){
+    delete<T>(url:string,body?:any):Promise<T>;
+    delete<T>(cfg:IHttpRequestConfig):Promise<T>;
+    delete<T>(...args:any[]):Promise<T>{
         if (args.length === 0){
             throw new Error(`Invalid argument, expected object or string but got undefined`); 
         }
@@ -101,9 +101,9 @@ export class AjaxClient implements IHttpClient{
         }
     }
 
-    patch(url:string,body?:any);
-    patch(cfg:IHttpRequestConfig);
-    patch(...args:any[]){
+    patch<T>(url:string,body?:any):Promise<T>;
+    patch<T>(cfg:IHttpRequestConfig):Promise<T>;
+    patch<T>(...args:any[]):Promise<T>{
         if (args.length === 0){
             throw new Error(`Invalid argument, expected object or string but got undefined`); 
         }
@@ -120,7 +120,7 @@ export class AjaxClient implements IHttpClient{
         }
     }
 
-    request<T>(cfg:IHttpRequestConfig){
+    request<T>(cfg:IHttpRequestConfig):Promise<T>{
         var ctx = createHttpContext(this._cache);
         var req = this.requestPipeline;
         var resp = this.responsePipeline; 

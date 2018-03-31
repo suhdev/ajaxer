@@ -1,6 +1,6 @@
 {
   "name": "jaxer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An http client library that abstracts AJAX functionality and supports cancellation",
   "main": "lib/index.js",
   "typings":"lib/index.d.ts",
