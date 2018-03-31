@@ -1,11 +1,11 @@
-# ajaxer 
+# jaxer 
 
 An HttpClient library to abstract AJAX functionality with support for cancellation. 
 
 
 ```typescript
 
-import {AjaxClient} from 'ajaxer'; 
+import {AjaxClient} from 'jaxer'; 
 
 var a = new AjaxClient(); 
 
