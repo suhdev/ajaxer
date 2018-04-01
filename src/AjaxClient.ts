@@ -206,7 +206,7 @@ export function createHttpRequest(){
     var xhr = new XMLHttpRequest(); 
     var _url = ''; 
     var _method = 'get'; 
-    var _timeout = 5*1000;
+    var _timeout = 20*1000;
     var _retryCount = 0; 
     var _retries = 1; 
     var _body:any = {};  

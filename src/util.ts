@@ -32,9 +32,15 @@ export function getXhrResponseBody(xhr:XMLHttpRequest,respPipeline:ResponseTrans
     if (contentType){
         contentType = contentType.toLowerCase(); 
         if (contentType.indexOf('application/json') !== -1){
-            resp = JSON.stringify(xhr.responseText);
+            resp = JSON.parse(xhr.responseText);
         }else if (contentType.indexOf('application/xml') !== -1){
-            resp = xhr.responseXML; 
+            var xmlDoc = typeof xhr.responseXML !== "undefined" && xhr.responseXML; 
+            if (xmlDoc){
+                return xmlDoc; 
+            }
+            var parser = new DOMParser(); 
+            xmlDoc = parser.parseFromString(xhr.responseText,"xml/application");
+            return xmlDoc;  
         }else {
             resp = xhr.responseText; 
         }
