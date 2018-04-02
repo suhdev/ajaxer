@@ -9,6 +9,7 @@ export interface IRequestFilter {
 export declare type IResponsePipeline = IResponseFilter[];
 export declare type IRequestPipeline = IRequestFilter[];
 export interface IHttpClient {
+    timeout: number;
     responsePipeline: IResponsePipeline;
     requestPipeline: IRequestPipeline;
     get<T>(url: string): Promise<T>;

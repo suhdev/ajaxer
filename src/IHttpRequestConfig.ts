@@ -8,6 +8,7 @@ export interface IHttpRequestConfig {
     headers?:Dictionary<string>; 
     cacheExpiryTimestamp?:number; 
     withCredentials?:boolean; 
+    timeout?:number; 
     credentials?:{
         username:string;
         password:string; 

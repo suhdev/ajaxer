@@ -9,10 +9,12 @@ export class AjaxClient implements IHttpClient{
     _responsePipeline:IResponsePipeline; 
     _requestPipeline:IRequestPipeline; 
     _cache:IHttpClientCache; 
+    timeout:number; 
     constructor(){
         this._cache = createHttpCache(); 
         this._requestPipeline = []; 
         this._responsePipeline = []; 
+        this.timeout = 25000; 
     }
 
     get responsePipeline():IResponsePipeline{
@@ -319,10 +321,11 @@ export function createHttpRequest(){
    
     var o:IReq = {
         fromHttpRequestConfig({url,method,
-            headers,withCredentials,
+            headers,withCredentials,timeout, 
             credentials}:IHttpRequestConfig){
             _url = url; 
             _method = method||'get';
+            _timeout = timeout||_timeout||25000;
             if (headers && typeof headers === "object"){
                 for(var k in headers){
                     setHeader(k,headers[k]); 

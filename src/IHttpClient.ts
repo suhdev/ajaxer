@@ -12,6 +12,7 @@ export type IResponsePipeline = IResponseFilter[];
 export type IRequestPipeline = IRequestFilter[]; 
 
 export interface IHttpClient {
+    timeout:number; 
     responsePipeline:IResponsePipeline; 
     requestPipeline:IRequestPipeline; 
 

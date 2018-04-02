@@ -6,6 +6,7 @@ export declare class AjaxClient implements IHttpClient {
     _responsePipeline: IResponsePipeline;
     _requestPipeline: IRequestPipeline;
     _cache: IHttpClientCache;
+    timeout: number;
     constructor();
     readonly responsePipeline: IResponsePipeline;
     readonly requestPipeline: IRequestPipeline;
