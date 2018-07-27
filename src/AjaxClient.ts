@@ -208,7 +208,7 @@ export function createHttpRequest(){
     var xhr = new XMLHttpRequest(); 
     var _url = ''; 
     var _method = 'get'; 
-    var _timeout = -1;
+    var _timeout = -1; 
     var _retryCount = 0; 
     var _retries = 1; 
     var _body:any = {};  
@@ -322,7 +322,7 @@ export function createHttpRequest(){
     var o:IReq = {
         fromHttpRequestConfig({url,method,
             headers,withCredentials,timeout, 
-            credentials}:IHttpRequestConfig){
+            credentials,body}:IHttpRequestConfig){
             _url = url; 
             _method = method||'get';
             _timeout = timeout||_timeout||-1;
@@ -338,6 +338,7 @@ export function createHttpRequest(){
                 _username = credentials.username; 
                 _password = credentials.password; 
             }
+            _body = body; 
 
             return o; 
         },
