@@ -14,7 +14,7 @@ export class AjaxClient implements IHttpClient{
         this._cache = createHttpCache(); 
         this._requestPipeline = []; 
         this._responsePipeline = []; 
-        this.timeout = 25000; 
+        this.timeout = -1; 
     }
 
     get responsePipeline():IResponsePipeline{
@@ -208,7 +208,7 @@ export function createHttpRequest(){
     var xhr = new XMLHttpRequest(); 
     var _url = ''; 
     var _method = 'get'; 
-    var _timeout = 20*1000;
+    var _timeout = -1;
     var _retryCount = 0; 
     var _retries = 1; 
     var _body:any = {};  
@@ -325,7 +325,7 @@ export function createHttpRequest(){
             credentials}:IHttpRequestConfig){
             _url = url; 
             _method = method||'get';
-            _timeout = timeout||_timeout||25000;
+            _timeout = timeout||_timeout||-1;
             if (headers && typeof headers === "object"){
                 for(var k in headers){
                     setHeader(k,headers[k]); 
@@ -392,12 +392,17 @@ export function createHttpRequest(){
                 xhr.open(_method,_url,true,_username,_password); 
                 xhr.withCredentials = _withCredentials; 
                 updateHeaders(); 
-                xhr.timeout = _timeout; 
+                if (_timeout && _timeout !== -1 && _timeout !== 0){
+                    xhr.timeout = _timeout; 
+                }
                 xhr.onabort = ()=>{
                     rej(); 
                 }; 
                 xhr.onerror = (err)=>{
                     rej(err.error); 
+                };
+                xhr.ontimeout = ()=>{
+                    rej(new Error('requestTimeout'));
                 };
                 xhr.onreadystatechange = (e)=>{
                     if (_cancelled){
